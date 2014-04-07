@@ -12,8 +12,10 @@ Rajeev::Application.routes.draw do
   end
   resources :users
 
+  root  'slots#index'
   resources :slots
   get "slots/find"
+
 
   resources :mbas
 
