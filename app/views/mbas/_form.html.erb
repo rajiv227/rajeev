@@ -1,0 +1,38 @@
+<%= form_for(@mba) do |f| %>
+  <% if @mba.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@mba.errors.count, "error") %> prohibited this mba from being saved:</h2>
+
+      <ul>
+      <% @mba.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :name %><br>
+    <%= f.text_field :name %>
+  </div>
+  <div class="field">
+    <%= f.label :school %><br>
+    <%= f.text_field :school %>
+  </div>
+
+    <div class="field">
+      <%= f.label :mbatype %><br>
+      <%= f.text_field :mba_type %>
+    </div>
+    <div class="field">
+      <%= f.label :company %><br>
+      <%= f.text_field :company %>
+    </div>
+    <div class="field">
+      <%= f.label :function %><br>
+      <%= f.text_field :function %>
+    </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

@@ -1,0 +1,29 @@
+<h1>Listing mbas</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>School</th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @mbas.each do |mba| %>
+      <tr>
+        <td><%= mba.name %></td>
+        <td><%= mba.school %></td>
+        <td><%= link_to 'Show', mba %></td>
+        <td><%= link_to 'Edit', edit_mba_path(mba) %></td>
+        <td><%= link_to 'Destroy', mba, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Mba', new_mba_path %>

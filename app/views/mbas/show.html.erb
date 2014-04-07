@@ -1,0 +1,14 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @mba.name %>
+</p>
+
+<p>
+  <strong>School:</strong>
+  <%= @mba.school %>
+</p>
+
+<%= link_to 'Edit', edit_mba_path(@mba) %> |
+<%= link_to 'Back', mbas_path %>

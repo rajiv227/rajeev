@@ -1,0 +1,14 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Appointment:</strong>
+  <%= @slot.appointment %>
+</p>
+
+<p>
+  <strong>Appointmenttype:</strong>
+  <%= @slot.appointmenttype %>
+</p>
+
+<%= link_to 'Edit', edit_slot_path(@slot) %> |
+<%= link_to 'Back', slots_path %>
