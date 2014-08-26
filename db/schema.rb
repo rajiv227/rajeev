@@ -11,45 +11,26 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140317024738) do
-
-  create_table "booked_slots", force: true do |t|
-    t.integer  "slot_id"
-    t.string   "bookee_name"
-    t.string   "bookee_school"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
+ActiveRecord::Schema.define(version: 20140518054922) do
 
   create_table "mbas", force: true do |t|
-    t.string   "name"
-    t.string   "school"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-    t.integer  "user_id"
-    t.string   "mba_type"
-    t.string   "company"
-    t.string   "function"
+    t.string  "name"
+    t.integer "user_id"
+    t.string  "school"
+    t.string  "mbatype"
+    t.string  "function"
+    t.string  "company"
   end
 
   create_table "slots", force: true do |t|
-    t.date     "appointment"
-    t.string   "appointmenttype"
-    t.integer  "mba_id"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-    t.string   "name"
-    t.string   "mba_type"
-    t.string   "company"
-    t.string   "function"
-    t.boolean  "booked"
+    t.integer "mba_id"
+    t.boolean "booked"
+    t.date    "slotdate"
   end
 
   create_table "users", force: true do |t|
-    t.string   "email"
-    t.string   "password"
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.string "email"
+    t.string "password"
   end
 
 end

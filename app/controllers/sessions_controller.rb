@@ -9,6 +9,8 @@ class SessionsController < ApplicationController
 
     if @user = User.authenticate(params[:email], params[:password])
       session[:user_id] = @user.id
+      p "Session Id in Authenticate"
+      p session[:user_id]
       @errors =  {:errors => "Login Success"}
       render(:json => @errors.to_json, :status => 200)
     else

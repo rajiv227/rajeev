@@ -1,5 +1,7 @@
 class MbasController < ApplicationController
+  skip_before_filter  :verify_authenticity_token
   before_action :set_mba, only: [:show, :edit, :update, :destroy]
+
 
   # GET /mbas
   # GET /mbas.json
@@ -26,6 +28,8 @@ class MbasController < ApplicationController
   # POST /mbas
   # POST /mbas.json
   def create
+    p "Session Id in MBA"
+    p session[:user_id]
     @user = User.find(session[:user_id])
    # @mba = Mba.create(name: params[:name],school: params[:school], user_id: @user.id)
     @mba=@user.build_mba(mba_params)
@@ -33,10 +37,10 @@ class MbasController < ApplicationController
     respond_to do |format|
       if @mba.save
         format.html { redirect_to @mba, notice: 'Mba was successfully created.' }
-        format.json { render action: 'show', status: :created, location: @mba }
+        format.json { render json: nil, status: :ok }
       else
         format.html { render action: 'new' }
-        format.json { render json: @mba.errors, status: :unprocessable_entity }
+        format.json { render json: nil, status: :not_found }
       end
     end
   end

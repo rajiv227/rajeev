@@ -1,4 +1,5 @@
 class UsersController < ApplicationController
+  skip_before_filter  :verify_authenticity_token
   before_action :set_user, only: [:show, :edit, :update, :destroy]
 
   # GET /users
@@ -26,15 +27,26 @@ class UsersController < ApplicationController
   def create
     @user = User.new(user_params)
 
+    #//@mba = Mba.new(user_params.name,user_params.school,user_params.mba_type,user_params.company,user_params.function)
+    #@mba = @user.build_mba(user_params.name,user_params.school,user_params.company)
+    #//user_params.mba_type,user_params.company,user_params.function)
+
     respond_to do |format|
       if @user.save
+
+        session[:user_id] = @user.id
+        p "Session Id in create user"
+        p session[:user_id]
         format.html { redirect_to @user, notice: 'User was successfully created.' }
-        format.json { render action: 'show', status: :created, location: @user }
+        #format.json { render action: 'show', status: :created, location: @user }
+        format.json { render json: nil, status: :ok }
+
       else
         format.html { render action: 'new' }
-        format.json { render json: @user.errors, status: :unprocessable_entity }
+        format.json { render json: nil, status: :not_found }
       end
     end
+
   end
 
   # PATCH/PUT /users/1
@@ -69,6 +81,7 @@ class UsersController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def user_params
-      params.require(:user).permit(:email, :password)
+     params.require(:user).permit(:email, :password)
     end
+
 end
